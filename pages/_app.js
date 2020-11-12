@@ -5,7 +5,7 @@ import '../styles/globals.css'
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <BarraTopo titulo="Hello World"></BarraTopo>
+      <BarraTopo titulo="Northwind App"></BarraTopo>
       <Component {...pageProps} />
     </>
   )
