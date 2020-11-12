@@ -11,6 +11,7 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "dotenv": "^8.2.0",
+    "etag": "^1.7.0",
     "knex": "^0.21.12",
     "next": "10.0.1",
     "pg": "^8.5.0",
