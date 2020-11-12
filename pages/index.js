@@ -1,9 +1,9 @@
 import { Button } from "@material-ui/core";
+import PageApp from "../components/PageApp";
 
 
 export default function Home() {
-  return <div>
-    Home works
-    <Button>I'm a button</Button>
-  </div>
+  return <PageApp title="Home">
+    This is home
+  </PageApp>
 }

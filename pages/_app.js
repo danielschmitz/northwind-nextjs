@@ -1,3 +1,4 @@
+import { Paper } from '@material-ui/core'
 import BarraTopo from '../components/BarraTopo'
 import '../styles/globals.css'
 
