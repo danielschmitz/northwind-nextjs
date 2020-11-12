@@ -35,7 +35,7 @@ export default function TableCategories(props) {
                         <TableCell >{row.description}</TableCell>
                         <TableCell align="right" width="10px">
                             <Button
-                                href="/signin"
+                                onClick={()=>props.onEdit(row)}
                             ><EditIcon /></Button>
                         </TableCell>
                     </TableRow>
