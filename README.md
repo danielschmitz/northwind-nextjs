@@ -1,7 +1,9 @@
 
 # Northwind Nextjs
 
-Esta é uma app totalmente funcional baseada na aplicação Northwind do antigo Microsoft Accees
+Esta é uma app totalmente funcional baseada na aplicação Northwind do antigo Microsoft Access
+
+Demo: https://northwind-nextjs.vercel.app/
 
 ## Database
 
