@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
-import MenuApp from './MenuApp';
+import MenuApp from './Menu';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function BarraTopo(props) {
+export default function TopBarApp(props) {
     const classes = useStyles();
     const [anchor, setAnchor] = useState(false)
 

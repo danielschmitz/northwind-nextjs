@@ -1,11 +1,11 @@
 import { Paper } from '@material-ui/core'
-import BarraTopo from '../components/BarraTopo'
+import TopBarApp from '../components/app/TopBar'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <BarraTopo titulo="Northwind App"></BarraTopo>
+      <TopBarApp titulo="Northwind App"></TopBarApp>
       <Component {...pageProps} />
     </>
   )

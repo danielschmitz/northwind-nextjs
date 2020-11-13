@@ -1,5 +1,5 @@
 import { Button, LinearProgress } from "@material-ui/core";
-import PageApp from "../components/PageApp";
+import PageApp from "../components/app/Page";
 import TableCategories from "../components/categories/Table";
 import FormCategories from "../components/categories/Form";
 import { useState } from "react";

@@ -1,5 +1,5 @@
 import { List, ListItem, ListItemText } from "@material-ui/core";
-import menu from "../menu";
+import menu from "../../menu";
 
 export default function MenuApp() {
     return (

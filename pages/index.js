@@ -1,5 +1,4 @@
-import { Button } from "@material-ui/core";
-import PageApp from "../components/PageApp";
+import PageApp from "../components/app/Page";
 
 
 export default function Home() {

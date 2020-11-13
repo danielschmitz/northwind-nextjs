@@ -1,4 +1,4 @@
-import PageApp from "../components/PageApp";
+import PageApp from "../components/app/Page";
 
 export default function Page2() {
     return <PageApp>
