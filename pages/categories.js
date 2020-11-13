@@ -8,14 +8,17 @@ import { mutate } from "swr";
 
 export default function Categories() {
 
-    const [open,setOpen] = useState(false);
-    const [formData,setFormData] = useState({})
+    const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [formData, setFormData] = useState({})
 
     const handleOpen = () => {
         setOpen(true)
     }
 
     const handleClose = () => {
+        setError(false)
         setOpen(false)
     }
 
@@ -35,7 +38,8 @@ export default function Categories() {
 
     const handleSave = async data => {
         console.log("save", data)
-
+        setError(false)
+        setLoading(true)
         try {
             const result = await http(
                 {
@@ -45,12 +49,16 @@ export default function Categories() {
                 }
             )
             mutate('/api/categories')
+            setLoading(false)
             handleClose();
         } catch (error) {
             console.log("ERROR", error)
-            // tratar msg de erro
-        }       
-       
+            setLoading(false)
+            if (error.response && error.response.data) {
+                setError(error.response.data)
+            }
+        }
+
     }
 
     const actions = <>
@@ -64,12 +72,14 @@ export default function Categories() {
             <TableCategories
                 onEdit={handleEdit}
             ></TableCategories>
-            <FormCategories 
-                open={open} 
+            <FormCategories
+                open={open}
                 onClose={handleClose}
                 onSave={handleSave}
                 formData={formData}
-                ></FormCategories>
+                error={error}
+                loading={loading}
+            ></FormCategories>
         </PageApp>
     )
 }

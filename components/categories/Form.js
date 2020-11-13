@@ -5,7 +5,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import Alert from '@material-ui/lab/Alert';
+import { LinearProgress } from '@material-ui/core';
 
 export default function FormCategories(props) {
 
@@ -29,6 +30,8 @@ export default function FormCategories(props) {
         fullWidth={true}
         maxWidth='sm'>
         <DialogTitle id="form-dialog-title">Category</DialogTitle>
+        { props.error && <Alert severity="error">{props.error}</Alert> }
+        { props.loading && <LinearProgress></LinearProgress> }
         <DialogContent>
             <TextField
                 autoFocus
