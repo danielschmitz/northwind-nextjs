@@ -10,6 +10,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "etag": "^1.7.0",
     "knex": "^0.21.12",

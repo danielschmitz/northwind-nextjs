@@ -3,6 +3,8 @@ import PageApp from "../components/PageApp";
 import TableCategories from "../components/categories/Table";
 import FormCategories from "../components/categories/Form";
 import { useState } from "react";
+import { http, METHOD } from "../utils";
+import { mutate } from "swr";
 
 export default function Categories() {
 
@@ -31,9 +33,16 @@ export default function Categories() {
         handleOpen()
     }
 
-    const handleSave = formData => {
-        console.log("save", formData)
-        alert('todo')
+    const handleSave = async data => {
+        console.log("save", data)
+        const result = await http(
+            {
+                method: data.id ? METHOD.PUT : METHOD.POST,
+                url: data.id ? `/api/category/${data.id}` : '/api/category',
+                data
+            }
+        )
+        mutate('/api/categories')
         handleClose();
     }
 

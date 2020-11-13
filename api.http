@@ -5,4 +5,8 @@ GET {{host}}/api/categories
 
 ###
 
-GET {{host}}/api/categories/2
+GET {{host}}/api/category/2
+
+###
+
+POST {{host}}/api/category/2
