@@ -35,15 +35,22 @@ export default function Categories() {
 
     const handleSave = async data => {
         console.log("save", data)
-        const result = await http(
-            {
-                method: data.id ? METHOD.PUT : METHOD.POST,
-                url: data.id ? `/api/category/${data.id}` : '/api/category',
-                data
-            }
-        )
-        mutate('/api/categories')
-        handleClose();
+
+        try {
+            result = await http(
+                {
+                    method: data.id ? METHOD.PUT : METHOD.POST,
+                    url: data.id ? `/api/category/${data.id}` : '/api/category',
+                    data
+                }
+            )
+            mutate('/api/categories')
+            handleClose();
+        } catch (error) {
+            console.log("ERROR", error.response.data)
+            // tratar msg de erro
+        }       
+       
     }
 
     const actions = <>

@@ -6,6 +6,12 @@ export default async (req, res) => {
 
     if (method === METHOD.POST) {
         const { name, description } = body
+
+        if (!name) return res.status(HTTP_STATUS.CONFLICT).send("The category name cannot be empty")
+
+        const categories = await db('categories').where({ name })
+        if (categories.length > 0) return res.status(HTTP_STATUS.CONFLICT).send("The category name already exists")
+
         const result = await db('categories').insert({name,description}).returning('id')
         return res.status(HTTP_STATUS.OK).json({...body,id:result[0]})
     }

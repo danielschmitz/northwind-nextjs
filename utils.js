@@ -18,5 +18,7 @@ export const METHOD = {
 export const HTTP_STATUS = {
     OK: '200',
     NOT_FOUND: '404',
-    NOT_ALLOWED: '405'
+    CONFLICT: '409',
+    NOT_ALLOWED: '405',
+
 }
