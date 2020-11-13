@@ -37,7 +37,7 @@ export default function Categories() {
         console.log("save", data)
 
         try {
-            result = await http(
+            const result = await http(
                 {
                     method: data.id ? METHOD.PUT : METHOD.POST,
                     url: data.id ? `/api/category/${data.id}` : '/api/category',
@@ -47,7 +47,7 @@ export default function Categories() {
             mutate('/api/categories')
             handleClose();
         } catch (error) {
-            console.log("ERROR", error.response.data)
+            console.log("ERROR", error)
             // tratar msg de erro
         }       
        
