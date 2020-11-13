@@ -9,4 +9,10 @@ GET {{host}}/api/category/2
 
 ###
 
-POST {{host}}/api/category/2
+PUT {{host}}/api/category/2
+content-type: application/json
+
+{
+    "name": "Foo",
+    "description": "Bar"
+}
