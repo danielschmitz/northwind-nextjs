@@ -60,7 +60,7 @@ export default function FormCategories(props) {
             <Button onClick={props.onClose}>
                 Cancel
           </Button>
-            <Button color="primary" onClick={()=>props.onSave(formData)}>
+            <Button color="primary" onClick={()=>props.onSave(formData)} disabled={props.loading}>
                 Save
           </Button>
         </DialogActions>
