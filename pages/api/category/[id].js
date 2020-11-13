@@ -13,6 +13,11 @@ export default async (req, res) => {
         return res.status(HTTP_STATUS.OK).json(result)
     }
 
+    if (method === METHOD.DELETE) {
+        const result = await db('categories').where({ id }).del()
+        return res.status(HTTP_STATUS.OK).json(result)
+    }
+
     if (method === METHOD.PUT) {
         const { name, description } = body
 

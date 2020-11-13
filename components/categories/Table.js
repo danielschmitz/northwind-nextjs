@@ -6,6 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import useSWR from 'swr'
 import { fetcher } from '../../utils';
 
@@ -33,10 +34,13 @@ export default function TableCategories(props) {
                         </TableCell>
                         <TableCell >{row.name}</TableCell>
                         <TableCell >{row.description}</TableCell>
-                        <TableCell align="right" width="10px">
+                        <TableCell align="right">
                             <Button
                                 onClick={()=>props.onEdit(row)}
                             ><EditIcon /></Button>
+                            <Button
+                                onClick={()=>props.onDelete(row)}
+                            ><DeleteIcon /></Button>
                         </TableCell>
                     </TableRow>
                 ))}

@@ -58,7 +58,15 @@ export default function Categories() {
                 setError(error.response.data)
             }
         }
+    }
 
+    const handleDelete = async data => {
+        try {
+            await http.delete(`/api/category/${data.id}`)
+            mutate('/api/categories')
+        } catch (error) {
+            console.log("ERROR", error)
+        }
     }
 
     const actions = <>
@@ -71,6 +79,7 @@ export default function Categories() {
         <PageApp title="Categories" actions={actions}>
             <TableCategories
                 onEdit={handleEdit}
+                onDelete={handleDelete}
             ></TableCategories>
             <FormCategories
                 open={open}
