@@ -5,10 +5,13 @@ import FormCategories from "../components/categories/Form";
 import { useState } from "react";
 import { http, METHOD } from "../utils";
 import { mutate } from "swr";
+import Confirm from "../components/Confirm";
 
 export default function Categories() {
 
     const [open, setOpen] = useState(false);
+    const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
+    const [itemToDelete, setItemToDelete] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [formData, setFormData] = useState({})
@@ -61,9 +64,15 @@ export default function Categories() {
     }
 
     const handleDelete = async data => {
+        setItemToDelete(data)
+        setConfirmDialogIsOpen(true)
+    }
+
+    const handleDeleteOk = async () => {
         try {
-            await http.delete(`/api/category/${data.id}`)
+            await http.delete(`/api/category/${itemToDelete.id}`)
             mutate('/api/categories')
+            setConfirmDialogIsOpen(false)
         } catch (error) {
             console.log("ERROR", error)
         }
@@ -89,6 +98,9 @@ export default function Categories() {
                 error={error}
                 loading={loading}
             ></FormCategories>
+            <Confirm open={confirmDialogIsOpen} onOk={handleDeleteOk} onCancel={() => setConfirmDialogIsOpen(false)}>
+                Confirme delete category <i>{itemToDelete.name}</i> ?
+            </Confirm>
         </PageApp>
     )
 }
