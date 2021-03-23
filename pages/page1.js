@@ -1,5 +1,5 @@
 import { Button, CardActions } from "@material-ui/core";
-import PageApp from "../components/app/page";
+import PageApp from "../components/app/Page";
 
 export default function Page1() {
 
