@@ -1,33 +1,19 @@
-require('dotenv').config()
 const env = process.env.NODE_ENV || "development"
 const knexfile = require('./knexfile')
 
-const DB_KEY = Symbol.for("MyApp.db");
-const globalSymbols = Object.getOwnPropertySymbols(global);
-const hasDb = (globalSymbols.indexOf(DB_KEY) > -1);
+let cachedConnection = global.cachedConnection
 
 function getConnection() {
 
-    let connection;
+  if (!cachedConnection) {
+    console.log('New Connection')
+    cachedConnection =  require('knex')(knexfile[env])
+    global.cachedConnection = cachedConnection
+    return cachedConnection
+  }
 
-    if (!hasDb) {
-        console.log("New Connection");
-        connection = require('knex')(knexfile[env])
-        global[DB_KEY] = connection
-    } else {
-        console.log("Reuse Connection");
-    }
+  console.log('Reuse Connection')
+  return cachedConnection;
 
-    const singleton = {};
-    Object.defineProperty(singleton, "instance", {
-        get: function () {
-            return global[DB_KEY];
-        }
-    });
-    Object.freeze(singleton);
-
-    return singleton;
 }
-
-const db = getConnection()
-module.exports = db.instance
+module.exports = getConnection()
