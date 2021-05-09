@@ -1,13 +1,13 @@
-import { Button, LinearProgress } from "@material-ui/core";
-import PageApp from "../components/app/Page";
-import TableCategories from "../components/categories/Table";
-import FormCategories from "../components/categories/Form";
 import { useState } from "react";
-import { http, METHOD } from "../utils";
 import { mutate } from "swr";
-import Confirm from "../components/Confirm";
 
-export default function Categories() {
+import TableCategories from "./table";
+import FormCategories from "./form";
+import Confirm from "../Confirm";
+import { http, METHOD } from "../../utils";
+import { Button } from "@material-ui/core";
+
+export default function Categories(props) {
 
     const [open, setOpen] = useState(false);
     const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function Categories() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [formData, setFormData] = useState({})
-
+  
     const handleOpen = () => {
         setOpen(true)
     }
@@ -78,29 +78,25 @@ export default function Categories() {
         }
     }
 
-    const actions = <>
+    return (<>
+        <TableCategories
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+        ></TableCategories>
+        <FormCategories
+            open={open}
+            onClose={handleClose}
+            onSave={handleSave}
+            formData={formData}
+            error={error}
+            loading={loading}
+        ></FormCategories>
+        <br/>
         <Button size="small" color="primary" onClick={handleNew}>
             New Category
         </Button>
-    </>
-
-    return (
-        <PageApp title="Categories" actions={actions}>
-            <TableCategories
-                onEdit={handleEdit}
-                onDelete={handleDelete}
-            ></TableCategories>
-            <FormCategories
-                open={open}
-                onClose={handleClose}
-                onSave={handleSave}
-                formData={formData}
-                error={error}
-                loading={loading}
-            ></FormCategories>
-            <Confirm open={confirmDialogIsOpen} onOk={handleDeleteOk} onCancel={() => setConfirmDialogIsOpen(false)}>
-                Confirme delete category <i>{itemToDelete.name}</i> ?
+        <Confirm open={confirmDialogIsOpen} onOk={handleDeleteOk} onCancel={() => setConfirmDialogIsOpen(false)}>
+            Confirme delete category <i>{itemToDelete.name}</i> ?
             </Confirm>
-        </PageApp>
-    )
+    </>)
 }

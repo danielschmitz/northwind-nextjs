@@ -6,7 +6,7 @@ import { CardActions, CardContent, Paper, Typography } from "@material-ui/core";
  * @param {*} props.title Titulo
  * @param {*} props.actions Titulo
  */
-export default function PageApp(props) {
+export default function Page(props) {
     return (
         <div className="contentApp">
             <Paper variant='outlined'>

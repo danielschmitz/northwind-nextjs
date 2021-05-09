@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
-import MenuApp from './Menu';
+import Menu from './Menu';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function TopBarApp(props) {
+export default function TopBar(props) {
     const classes = useStyles();
     const [anchor, setAnchor] = useState(false)
 
@@ -34,7 +34,7 @@ export default function TopBarApp(props) {
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
-         <MenuApp></MenuApp>
+         <Menu></Menu>
         </div>
       );
 
