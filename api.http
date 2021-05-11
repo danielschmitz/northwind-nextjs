@@ -5,14 +5,18 @@ GET {{host}}/api/categories
 
 ###
 
-GET {{host}}/api/category/2
+GET {{host}}/api/categories/2
 
 ###
 
-PUT {{host}}/api/category/2
+PUT {{host}}/api/categories/2
 content-type: application/json
 
 {
     "name": "Foo",
     "description": "Bar"
 }
+
+###
+
+DELETE {{host}}/api/categories/1

@@ -13,9 +13,9 @@ export default async (req, res) => {
         if (categories.length > 0) return res.status(HTTP_STATUS.CONFLICT).send("The category name already exists")
 
         const result = await db('categories').insert({name,description}).returning('id')
-        return res.status(HTTP_STATUS.OK).json({...body,id:result[0]})
+        return res.status(HTTP_STATUS.CREATED).json({...body,id:result[0]})
     }
 
-    return res.status(HTTP_STATUS.NOT_ALLOWED).send(`${method} Method Not Allowed`)
+    return res.status(HTTP_STATUS.OK).json(await db('categories').orderBy('id'))
 }   
     
