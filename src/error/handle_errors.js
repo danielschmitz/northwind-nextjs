@@ -1,3 +1,5 @@
+import HTTP_STATUS from "../utils/http_status";
+
 const handleErrors = handler => {
   return async (req, res) => {
     try {

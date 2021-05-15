@@ -11,7 +11,7 @@ export default {
     },
     create: async (name, description) => {
 
-        if (!name) throw new Error("The category name cannot be empty")
+        if (isStringBlank(name)) throw new Error("The category name cannot be empty")
 
         const categories = await db('categories').where({ name })
         if (categories.length > 0) throw new Error("The category name already exists")
@@ -21,7 +21,7 @@ export default {
     },
     update: async (id, name, description) => {
 
-        if (isStringBlank(name)) throw new Error("Name can't be empty")
+        if (isStringBlank(name)) throw new Error("The category name cannot be empty")
 
         const category = await db('categories').where({ id })
         if (category.length === 0) throw new NotFoundError("Category not found")
