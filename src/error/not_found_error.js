@@ -1,3 +1,4 @@
+import HTTP_STATUS from "../utils/http_status";
 class NotFoundError extends Error {
     constructor(args){
         super(args);

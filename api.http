@@ -9,14 +9,14 @@ GET {{host}}/api/categories/2
 
 ###
 
-PUT {{host}}/api/categories/2
+PUT {{host}}/api/categories/3
 content-type: application/json
 
 {
-    "name": "Foo",
+    "name": "",
     "description": "Bar"
 }
 
 ###
 
-DELETE {{host}}/api/categories/2
+DELETE {{host}}/api/categories/22

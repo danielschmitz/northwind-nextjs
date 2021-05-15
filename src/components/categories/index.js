@@ -55,7 +55,6 @@ export default function Categories(props) {
             setLoading(false)
             handleClose();
         } catch (error) {
-            console.log("ERROR", error)
             setLoading(false)
             if (error.response && error.response.data) {
                 setError(error.response.data)
@@ -70,7 +69,7 @@ export default function Categories(props) {
 
     const handleDeleteOk = async () => {
         try {
-            await http.delete(`/api/category/${itemToDelete.id}`)
+            await http.delete(`/api/categories/${itemToDelete.id}`)
             refreshData()
             setConfirmDialogIsOpen(false)
         } catch (error) {

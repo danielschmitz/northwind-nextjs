@@ -3,7 +3,6 @@ import categoriesService from '../../../services/categories'
 import HTTP_METHOD from '../../../utils/http_method'
 import HTTP_STATUS from '../../../utils/http_status'
 
-
 const api = async (req, res) => {
 
     const {
@@ -24,7 +23,7 @@ const api = async (req, res) => {
 
     if (method === HTTP_METHOD.PUT) { // PUT /api/categories/{id}
         const { name, description } = body
-        const result = categoriesService.update(id, name, description)
+        const result = await categoriesService.update(id, name, description)
         return res.status(HTTP_STATUS.OK).send(result)
     }
 
