@@ -44,14 +44,14 @@ export default function Categories(props) {
         setError(false)
         setLoading(true)
         try {
-            const result = await http(
+            await http(
                 {
                     method: data.id ? HTTP_METHOD.PUT : HTTP_METHOD.POST,
                     url: data.id ? `/api/categories/${data.id}` : '/api/categories',
                     data
                 }
             )
-            mutate('/api/categories')
+            refreshData()
             setLoading(false)
             handleClose();
         } catch (error) {
@@ -71,11 +71,15 @@ export default function Categories(props) {
     const handleDeleteOk = async () => {
         try {
             await http.delete(`/api/category/${itemToDelete.id}`)
-            mutate('/api/categories')
+            refreshData()
             setConfirmDialogIsOpen(false)
         } catch (error) {
             console.log("ERROR", error)
         }
+    }
+
+    const refreshData = () => {
+        mutate('/api/categories', data=>data)
     }
 
     return (<>
