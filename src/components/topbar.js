@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
-import Menu from './Menu';
+import Menu from './menu';
 
 const useStyles = makeStyles((theme) => ({
     root: {

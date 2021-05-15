@@ -1,4 +1,4 @@
-import TopBar from '../components/topBar'
+import TopBar from '../components/topbar'
 import '../../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {

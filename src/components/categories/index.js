@@ -3,7 +3,7 @@ import { mutate } from "swr";
 
 import TableCategories from "./table";
 import FormCategories from "./form";
-import Confirm from "../Confirm";
+import Confirm from "../confirm";
 import { http, METHOD } from "../../utils";
 import { Button } from "@material-ui/core";
 
