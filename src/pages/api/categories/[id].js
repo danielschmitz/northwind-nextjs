@@ -1,5 +1,6 @@
-import db from "../../../db"
+import categoriesService from '../../../services/categories'
 import { HTTP_STATUS, METHOD, isStringBlank } from "../../../utils"
+
 export default async (req, res) => {
 
     const {
@@ -9,19 +10,19 @@ export default async (req, res) => {
     } = req
 
     if (method === METHOD.GET) { // GET /api/categories/{id}
-        const result = await db('categories').where({ id })
+        const result = await categoriesService.getById(id)
         return res.status(HTTP_STATUS.OK).json(result)
     }
 
     if (method === METHOD.DELETE) { // DELETE /api/categories/{id}
 
-        const category = await db('categories').where({ id })
-        if (category.length === 0) {
-            return res.status(HTTP_STATUS.NOT_FOUND).send("Category not found")
-        }
-
-        const result = await db('categories').where({ id }).del()
-        return res.status(HTTP_STATUS.OK).json(result)
+        //try {
+            const result = await categoriesService.delete(id)
+            return res.status(HTTP_STATUS.OK).json(result)
+        //} catch (error) {
+        //    return res.status(HTTP_STATUS.BAD_REQUEST).json(error.message)
+        //}       
+        
     }
 
     if (method === METHOD.PUT) { // PUT /api/categories/{id}
@@ -44,6 +45,6 @@ export default async (req, res) => {
     }
 
     // ANOTHERS METHODS... PATH FOR EXAMPLE....
-    return res.status(HTTP_STATUS.NOT_ALLOWED).send(`${method} Method Not Allowed`)
+    return res.status(HTTP_STATUS.NOT_ALLOWED).send('Method Not Allowed')
 
 }

@@ -19,4 +19,4 @@ content-type: application/json
 
 ###
 
-DELETE {{host}}/api/categories/1
+DELETE {{host}}/api/categories/7

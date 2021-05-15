@@ -1,5 +1,7 @@
-import db from "../../../db"
+import categoriesService from '../../../services/categories'
 import { HTTP_STATUS, METHOD } from "../../../utils"
+
+
 export default async (req, res) => {
 
     const { method, body } = req
@@ -7,15 +9,16 @@ export default async (req, res) => {
     if (method === METHOD.POST) {
         const { name, description } = body
 
-        if (!name) return res.status(HTTP_STATUS.CONFLICT).send("The category name cannot be empty")
-
-        const categories = await db('categories').where({ name })
-        if (categories.length > 0) return res.status(HTTP_STATUS.CONFLICT).send("The category name already exists")
-
-        const result = await db('categories').insert({name,description}).returning('id')
-        return res.status(HTTP_STATUS.CREATED).json({...body,id:result[0]})
+        try {
+            const result = await categoriesService.create(name, description)
+            return res.status(HTTP_STATUS.CREATED).json({...body,id:result[0]})
+        } catch (error) {
+            return res.status(HTTP_STATUS.BAD_REQUEST).json(error.message)
+        }
+        
     }
 
-    return res.status(HTTP_STATUS.OK).json(await db('categories').orderBy('id'))
+    const result = await categoriesService.getAll()
+    return res.status(HTTP_STATUS.OK).json(result)
 }   
     
