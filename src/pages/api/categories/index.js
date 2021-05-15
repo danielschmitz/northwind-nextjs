@@ -1,12 +1,13 @@
 import categoriesService from '../../../services/categories'
-import { HTTP_STATUS, METHOD } from "../../../utils"
+import HTTP_METHOD from '../../../utils/http_method'
+import HTTP_STATUS from '../../../utils/http_status'
 
 
 export default async (req, res) => {
 
     const { method, body } = req
 
-    if (method === METHOD.POST) {
+    if (method === HTTP_METHOD.POST) {
         const { name, description } = body
 
         try {

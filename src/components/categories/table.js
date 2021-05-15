@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import useSWR from 'swr'
-import { fetcher } from '../../utils';
+import { fetcher } from '../../utils/fetcher';
 
 
 export default function TableCategories(props) {

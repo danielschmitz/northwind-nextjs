@@ -1,7 +1,10 @@
+import handleErrors from '../../../error/handle_errors'
 import categoriesService from '../../../services/categories'
-import { HTTP_STATUS, METHOD, isStringBlank } from "../../../utils"
+import HTTP_METHOD from '../../../utils/http_method'
+import HTTP_STATUS from '../../../utils/http_status'
 
-export default async (req, res) => {
+
+const api = async (req, res) => {
 
     const {
         query: { id },
@@ -9,38 +12,19 @@ export default async (req, res) => {
         body
     } = req
 
-    if (method === METHOD.GET) { // GET /api/categories/{id}
+    if (method === HTTP_METHOD.GET) { // GET /api/categories/{id}
         const result = await categoriesService.getById(id)
         return res.status(HTTP_STATUS.OK).json(result)
     }
 
-    if (method === METHOD.DELETE) { // DELETE /api/categories/{id}
-
-        //try {
-            const result = await categoriesService.delete(id)
-            return res.status(HTTP_STATUS.OK).json(result)
-        //} catch (error) {
-        //    return res.status(HTTP_STATUS.BAD_REQUEST).json(error.message)
-        //}       
-        
+    if (method === HTTP_METHOD.DELETE) { // DELETE /api/categories/{id}
+        const result = await categoriesService.delete(id)
+        return res.status(HTTP_STATUS.OK).json(result)
     }
 
-    if (method === METHOD.PUT) { // PUT /api/categories/{id}
+    if (method === HTTP_METHOD.PUT) { // PUT /api/categories/{id}
         const { name, description } = body
-
-        const category = await db('categories').where({ id })
-        if (category.length === 0) {
-            return res.status(HTTP_STATUS.NOT_FOUND).send("Category not found")
-        }
-
-        if (isStringBlank(name)) {
-            return res.status(HTTP_STATUS.BAD_REQUEST).send("Name can't be empty")
-        }
-
-        const categories = await db('categories').where({ name }).whereNot({ id })
-        if (categories.length > 0) return res.status(HTTP_STATUS.CONFLICT).send("The category name already exists")
-
-        const result = await db('categories').where({ id }).update({ name, description })
+        const result = categoriesService.update(id, name, description)
         return res.status(HTTP_STATUS.OK).send(result)
     }
 
@@ -48,3 +32,5 @@ export default async (req, res) => {
     return res.status(HTTP_STATUS.NOT_ALLOWED).send('Method Not Allowed')
 
 }
+
+export default handleErrors(api)

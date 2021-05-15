@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { mutate } from "swr";
-
 import TableCategories from "./table";
 import FormCategories from "./form";
 import Confirm from "../confirm";
-import { http, METHOD } from "../../utils";
 import { Button } from "@material-ui/core";
+import http from "../../utils/http";
+import HTTP_METHOD from "../../utils/http_method";
 
 export default function Categories(props) {
 
@@ -46,8 +46,8 @@ export default function Categories(props) {
         try {
             const result = await http(
                 {
-                    method: data.id ? METHOD.PUT : METHOD.POST,
-                    url: data.id ? `/api/category/${data.id}` : '/api/category',
+                    method: data.id ? HTTP_METHOD.PUT : HTTP_METHOD.POST,
+                    url: data.id ? `/api/categories/${data.id}` : '/api/categories',
                     data
                 }
             )
