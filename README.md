@@ -30,3 +30,14 @@ $ npm run migrate
 ```
 
 PS: Every time you run `npm run mugrate` the data will be erased to default. Dont use `npm run migrate` in the production servers
+
+## REST API
+
+![](REST.png)
+
+Check api.http
+
+|METHOD |URI  | Description| Input | Output
+--- | --- | ---| ---| ---
+|GET|/api/categories|Get All Categories|-|![](https://imgur.com/JyZVqX8.png)
+|POST|/api/categories|Create a category|-|
