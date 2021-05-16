@@ -37,7 +37,3 @@ PS: Every time you run `npm run mugrate` the data will be erased to default. Don
 
 Check api.http with Rest Client Extension (Visual Studio Code)
 
-|METHOD |URI  | Description| Input | Output
---- | --- | ---| ---| ---
-|GET|/api/categories|Get All Categories|-|![](https://imgur.com/bLN7xt0.png)
-|POST|/api/categories|Create a category|-|
