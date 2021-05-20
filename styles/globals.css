@@ -21,3 +21,7 @@ a {
 .contentApp {
   margin:10px;
 }
+
+.card-item {
+  background-color: chocolate;
+}
