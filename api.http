@@ -1,22 +1,25 @@
 
 @host = http://localhost:3000
 
-GET {{host}}/api/categories
 
-###
+### Get Categories
 
-GET {{host}}/api/categories/2
+    GET {{host}}/api/categories
 
-###
+### Get Category By Id
+    GET {{host}}/api/categories/2
 
-PUT {{host}}/api/categories/3
-content-type: application/json
+### Update Category
+    PUT {{host}}/api/categories/3
+    content-type: application/json
 
-{
-    "name": "",
-    "description": "Bar"
-}
+    {
+        "name": "",
+        "description": "Bar"
+    }
 
-###
+### Delete Category
+    DELETE {{host}}/api/categories/22
 
-DELETE {{host}}/api/categories/22
+
+    
