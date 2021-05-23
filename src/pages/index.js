@@ -1,7 +1,5 @@
-import Page from "../components/page";
+import Page from "../components/page"
 
 export default function Home() {
-  return <Page title="Home">
-    This is home
-  </Page>
+  return <Page title="Home">This is home</Page>
 }

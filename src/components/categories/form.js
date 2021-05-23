@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Alert from "@material-ui/lab/Alert";
-import { LinearProgress } from "@material-ui/core";
-import DivFlex from "../div-flex";
+import React, { useEffect, useState } from "react"
+import Button from "@material-ui/core/Button"
+import TextField from "@material-ui/core/TextField"
+import Dialog from "@material-ui/core/Dialog"
+import DialogActions from "@material-ui/core/DialogActions"
+import DialogContent from "@material-ui/core/DialogContent"
+import DialogTitle from "@material-ui/core/DialogTitle"
+import Alert from "@material-ui/lab/Alert"
+import { LinearProgress } from "@material-ui/core"
+import DivFlex from "../div-flex"
 
 export default function FormCategories(props) {
   useEffect(() => {
-    setFormData(props.formData);
-  }, [props.formData]);
+    setFormData(props.formData)
+  }, [props.formData])
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({})
 
   const handleNameChange = (event) => {
-    setFormData({ ...formData, name: event.target.value });
-  };
+    setFormData({ ...formData, name: event.target.value })
+  }
 
   const handleDescriptionChange = (event) => {
-    setFormData({ ...formData, description: event.target.value });
-  };
+    setFormData({ ...formData, description: event.target.value })
+  }
 
   const handleDelete = () => {
-      props.onDelete(props.formData)
+    props.onDelete(props.formData)
   }
 
   return (
@@ -63,7 +63,13 @@ export default function FormCategories(props) {
         />
       </DialogContent>
       <DialogActions>
-        { props.formData.id ? <Button onClick={handleDelete} color="secondary">Delete</Button> : '' }
+        {props.formData.id ? (
+          <Button onClick={handleDelete} color="secondary">
+            Delete
+          </Button>
+        ) : (
+          ""
+        )}
         <DivFlex />
         <Button onClick={props.onClose}>Cancel</Button>
         <Button
@@ -75,5 +81,5 @@ export default function FormCategories(props) {
         </Button>
       </DialogActions>
     </Dialog>
-  );
+  )
 }
