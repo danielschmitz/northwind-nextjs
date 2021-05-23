@@ -10,8 +10,8 @@ import {
 import useSWR from "swr"
 import fetcher from "../../utils/fetcher"
 
-export default function GridCategories(props) {
-  const { data, error } = useSWR("/api/categories", fetcher)
+export default function GridSuppliers(props) {
+  const { data, error } = useSWR("/api/suppliers", fetcher)
   if (error) return <div>failed to load</div>
   if (!data) return <LinearProgress></LinearProgress>
 
@@ -23,10 +23,13 @@ export default function GridCategories(props) {
             <Card variant="outlined" bgcolor="gray">
               <CardContent>
                 <Typography gutterBottom variant="body1" component="p">
-                  {row.name}
+                  {row.contactName}
+                </Typography>
+                <Typography gutterBottom variant="body2" component="p">
+                  {row.companyName}
                 </Typography>
                 <Typography gutterBottom variant="caption" component="p">
-                  {row.description}
+                  {row.contactTitle}
                 </Typography>
               </CardContent>
               <CardActions>
