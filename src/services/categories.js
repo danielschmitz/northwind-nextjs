@@ -1,4 +1,4 @@
-import db from "../db"
+import db from "./db"
 import NotFoundError from "../error/not_found_error"
 import isStringBlank from "../utils/is_string_blank"
 import TABLE_NAME from "../utils/table_name"
