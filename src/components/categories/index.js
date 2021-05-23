@@ -111,7 +111,7 @@ export default function Categories(props) {
         onOk={handleDeleteOk}
         onCancel={() => setConfirmDialogIsOpen(false)}
       >
-        Confirme delete category <i>{itemToDelete.name}</i> ?
+        Confirm delete category <i>{itemToDelete.name}</i> ?
       </Confirm>
     </>
   )
