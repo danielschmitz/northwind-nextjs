@@ -1,11 +1,8 @@
 import { CardActions, CardContent, Paper, Typography } from "@material-ui/core";
 
-
-/**
- * 
- * @param {*} props.title Titulo
- * @param {*} props.actions Titulo
- */
+/*
+A component with title, content and action areas
+*/
 export default function Page(props) {
     return (
         <div className="contentApp">
