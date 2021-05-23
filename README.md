@@ -1,19 +1,14 @@
-
 # Northwind Nextjs
 
 Esta é uma app totalmente funcional baseada na aplicação Northwind do antigo Microsoft Access
 
 Demo: https://northwind-nextjs.vercel.app/
 
-
-
 ## Database
 
 ![](Northwind.png)
 
-
 ## Install
-
 
 ```
 $ git clone https://github.com/danielschmitz/northwind-nextjs.git
@@ -36,4 +31,3 @@ PS: Every time you run `npm run mugrate` the data will be erased to default. Don
 ![](REST.png)
 
 Check api.http with Rest Client Extension (Visual Studio Code)
-
