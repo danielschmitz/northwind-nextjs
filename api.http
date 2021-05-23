@@ -19,7 +19,27 @@
     }
 
 ### Delete Category
+
     DELETE {{host}}/api/categories/22
 
 
+### Get Suppliers
+
+    GET {{host}}/api/suppliers
+
+### Get Supplier By Id
+    GET {{host}}/api/suppliers/2
+
+### Update Supplier
+    PUT {{host}}/api/suppliers/3
+    content-type: application/json
+
+    {
+        "contactName": "Jhon",
+        "contactTitle": "Sr",
+        "companyName": "Acme LTDA"
+    }
+
+### Delete Supplier
     
+    DELETE {{host}}/api/suppliers/22
