@@ -25,3 +25,13 @@ a {
 .card-item {
   background-color: chocolate;
 }
+
+.fixedBottomRight {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+.right {
+  float: right;
+}

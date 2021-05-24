@@ -3,8 +3,9 @@ import { mutate } from "swr"
 import TableCategories from "./table"
 import GridCategories from "./grid"
 import Confirm from "../confirm"
-import { Button, Hidden, Link } from "@material-ui/core"
+import { Button, Fab, Hidden, Link } from "@material-ui/core"
 import http from "../../utils/http"
+import AddIcon from "@material-ui/icons/Add"
 
 export default function Categories(props) {
   const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false)
@@ -34,11 +35,13 @@ export default function Categories(props) {
 
   return (
     <>
-      <Link href="/suppliers/new">
-        <Button size="small" color="primary">
-          New Supplier
-        </Button>
-      </Link>
+      <div class="fixedBottomRight">
+        <Link href="/suppliers/new">
+          <Fab color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
+        </Link>
+      </div>
       <br />
       <br />
       <Hidden smDown>
