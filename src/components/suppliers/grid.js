@@ -34,7 +34,7 @@ export default function GridSuppliers(props) {
               </CardContent>
               <CardActions>
                 <Button onClick={() => props.onEdit(row)} color="primary">
-                  Editar
+                  Edit
                 </Button>
               </CardActions>
             </Card>
