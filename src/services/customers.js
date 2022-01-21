@@ -43,11 +43,13 @@ export default {
       .whereNot({ id })
 
     if (customers.length > 0)
-      return await db(TABLE_NAME.customers).where({ id }).update({
-        contactName,
-        companyName,
-        contactTitle,
-      })
+      throw new Error("The customer name already exists")
+
+    return await db(TABLE_NAME.customers).where({ id }).update({
+      contactName,
+      companyName,
+      contactTitle,
+    })
   },
   delete: async (id) => {
     const customer = await db(TABLE_NAME.customers).where({ id })
