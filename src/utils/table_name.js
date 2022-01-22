@@ -3,5 +3,6 @@ const TABLE_NAME = {
   suppliers: "suppliers",
   customers: "customers",
   shippers: "shippers",
+  employees: "employees",
 }
 export default TABLE_NAME
