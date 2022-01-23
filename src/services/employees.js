@@ -5,7 +5,16 @@ import TABLE_NAME from "../utils/table_name"
 
 export default {
   getById: async (id) => {
-    return await db(TABLE_NAME.employees).where({ id })
+    const result = await db(TABLE_NAME.employees).where({ id })
+    if (result[0]) {
+      if (result[0].reports_to) {
+        const boss = await db(TABLE_NAME.employees).where({
+          id: result[0].reports_to,
+        })
+        result[0].boss = boss[0]
+      }
+    }
+    return result[0]
   },
   getAll: async () => {
     return await db(TABLE_NAME.employees).orderBy("id")

@@ -4,5 +4,6 @@ const menu = [
   { id: 3, title: "Suppliers", href: "/suppliers" },
   { id: 3, title: "Customers", href: "/customers" },
   { id: 3, title: "Shippers", href: "/shippers" },
+  { id: 3, title: "Employee", href: "/employees" },
 ]
 export default menu
