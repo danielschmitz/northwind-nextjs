@@ -1,9 +1,9 @@
-import TableEmployees from "./table"
+import ListEmployees from "./list"
 
 export default function Employees(props) {
   return (
     <div>
-      <TableEmployees></TableEmployees>
+      <ListEmployees></ListEmployees>
     </div>
   )
 }
