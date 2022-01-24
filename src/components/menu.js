@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText } from "@material-ui/core"
+import { List, ListItem, ListItemText } from "@mui/material"
 import menu from "../menu"
 
 export default function Menu() {

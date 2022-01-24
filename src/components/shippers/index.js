@@ -4,7 +4,7 @@ import TableShippers from "./table"
 import GridShippers from "./grid"
 import FormShippers from "./form"
 import Confirm from "../confirm"
-import { Button, Hidden } from "@material-ui/core"
+import { Button, Hidden } from "@mui/material"
 import http from "../../utils/http"
 import HTTP_METHOD from "../../utils/http_method"
 
@@ -80,40 +80,38 @@ export default function Shippers(props) {
     mutate("/api/shippers", (data) => data)
   }
 
-  return (
-    <>
-      <Hidden smDown>
-        <TableShippers
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        ></TableShippers>
-      </Hidden>
-      <Hidden mdUp>
-        <GridShippers
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        ></GridShippers>
-      </Hidden>
-      <FormShippers
-        open={open}
-        onClose={handleClose}
-        onSave={handleSave}
+  return <>
+    <Hidden mdDown>
+      <TableShippers
+        onEdit={handleEdit}
         onDelete={handleDelete}
-        formData={formData}
-        error={error}
-        loading={loading}
-      ></FormShippers>
-      <br />
-      <Button size="small" color="primary" onClick={handleNew}>
-        New Shipper
-      </Button>
-      <Confirm
-        open={confirmDialogIsOpen}
-        onOk={handleDeleteOk}
-        onCancel={() => setConfirmDialogIsOpen(false)}
-      >
-        Confirm delete shipper <i>{itemToDelete.contactName}</i> ?
-      </Confirm>
-    </>
-  )
+      ></TableShippers>
+    </Hidden>
+    <Hidden mdUp>
+      <GridShippers
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      ></GridShippers>
+    </Hidden>
+    <FormShippers
+      open={open}
+      onClose={handleClose}
+      onSave={handleSave}
+      onDelete={handleDelete}
+      formData={formData}
+      error={error}
+      loading={loading}
+    ></FormShippers>
+    <br />
+    <Button size="small" color="primary" onClick={handleNew}>
+      New Shipper
+    </Button>
+    <Confirm
+      open={confirmDialogIsOpen}
+      onOk={handleDeleteOk}
+      onCancel={() => setConfirmDialogIsOpen(false)}
+    >
+      Confirm delete shipper <i>{itemToDelete.contactName}</i> ?
+    </Confirm>
+  </>;
 }

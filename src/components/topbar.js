@@ -1,20 +1,18 @@
 import React, { useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
-import IconButton from "@material-ui/core/IconButton"
-import MenuIcon from "@material-ui/icons/Menu"
-import Drawer from "@material-ui/core/Drawer"
-import Menu from "./menu"
+import { makeStyles } from "@mui/styles"
+import AppBar from "@mui/material/AppBar"
+import Toolbar from "@mui/material/Toolbar"
+import Typography from "@mui/material/Typography"
+import IconButton from "@mui/material/IconButton"
+import Drawer from "@mui/material/Drawer"
+import MenuList from "./menu"
+import { Menu } from "@mui/icons-material"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  menuButton: {},
   title: {
     flexGrow: 1,
   },
@@ -34,7 +32,7 @@ export default function TopBar(props) {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <Menu></Menu>
+      <MenuList></MenuList>
     </div>
   )
 
@@ -58,8 +56,9 @@ export default function TopBar(props) {
             color="inherit"
             aria-label="menu"
             onClick={toggleDrawer(true)}
+            size="large"
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             {props.titulo}

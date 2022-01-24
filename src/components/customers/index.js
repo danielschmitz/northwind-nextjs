@@ -4,7 +4,7 @@ import TableCustomers from "./table"
 import GridCustomers from "./grid"
 import FormCustomers from "./form"
 import Confirm from "../confirm"
-import { Button, Hidden } from "@material-ui/core"
+import { Button, Hidden } from "@mui/material"
 import http from "../../utils/http"
 import HTTP_METHOD from "../../utils/http_method"
 
@@ -80,40 +80,38 @@ export default function Customers(props) {
     mutate("/api/customers", (data) => data)
   }
 
-  return (
-    <>
-      <Hidden smDown>
-        <TableCustomers
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        ></TableCustomers>
-      </Hidden>
-      <Hidden mdUp>
-        <GridCustomers
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        ></GridCustomers>
-      </Hidden>
-      <FormCustomers
-        open={open}
-        onClose={handleClose}
-        onSave={handleSave}
+  return <>
+    <Hidden mdDown>
+      <TableCustomers
+        onEdit={handleEdit}
         onDelete={handleDelete}
-        formData={formData}
-        error={error}
-        loading={loading}
-      ></FormCustomers>
-      <br />
-      <Button size="small" color="primary" onClick={handleNew}>
-        New Customer
-      </Button>
-      <Confirm
-        open={confirmDialogIsOpen}
-        onOk={handleDeleteOk}
-        onCancel={() => setConfirmDialogIsOpen(false)}
-      >
-        Confirm delete customer <i>{itemToDelete.contactName}</i> ?
-      </Confirm>
-    </>
-  )
+      ></TableCustomers>
+    </Hidden>
+    <Hidden mdUp>
+      <GridCustomers
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      ></GridCustomers>
+    </Hidden>
+    <FormCustomers
+      open={open}
+      onClose={handleClose}
+      onSave={handleSave}
+      onDelete={handleDelete}
+      formData={formData}
+      error={error}
+      loading={loading}
+    ></FormCustomers>
+    <br />
+    <Button size="small" color="primary" onClick={handleNew}>
+      New Customer
+    </Button>
+    <Confirm
+      open={confirmDialogIsOpen}
+      onOk={handleDeleteOk}
+      onCancel={() => setConfirmDialogIsOpen(false)}
+    >
+      Confirm delete customer <i>{itemToDelete.contactName}</i> ?
+    </Confirm>
+  </>;
 }

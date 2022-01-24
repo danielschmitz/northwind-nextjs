@@ -6,7 +6,7 @@ import {
   Grid,
   LinearProgress,
   Typography,
-} from "@material-ui/core"
+} from "@mui/material"
 import useSWR from "swr"
 import fetcher from "../../utils/fetcher"
 

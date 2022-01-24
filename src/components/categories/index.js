@@ -4,7 +4,7 @@ import TableCategories from "./table"
 import GridCategories from "./grid"
 import FormCategories from "./form"
 import Confirm from "../confirm"
-import { Button, Hidden } from "@material-ui/core"
+import { Button, Hidden } from "@mui/material"
 import http from "../../utils/http"
 import HTTP_METHOD from "../../utils/http_method"
 
@@ -79,9 +79,11 @@ export default function Categories(props) {
     mutate("/api/categories", (data) => data)
   }
 
+  console.log("categories.index")
+
   return (
     <>
-      <Hidden smDown>
+      <Hidden mdDown>
         <TableCategories
           onEdit={handleEdit}
           onDelete={handleDelete}

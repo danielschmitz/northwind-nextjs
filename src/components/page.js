@@ -1,4 +1,4 @@
-import { CardActions, CardContent, Paper, Typography } from "@material-ui/core"
+import { CardActions, CardContent, Paper, Typography } from "@mui/material"
 
 /*
 A component with title, content and action areas
