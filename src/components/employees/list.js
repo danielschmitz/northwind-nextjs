@@ -5,8 +5,6 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material"
-import EditIcon from "@mui/icons-material/Edit"
-import DeleteIcon from "@mui/icons-material/Delete"
 import useSWR from "swr"
 import fetcher from "../../utils/fetcher"
 
@@ -18,11 +16,18 @@ export default function ListEmployees(porps) {
   return (
     <>
       <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemText primary="Foo"></ListItemText>
-          </ListItemButton>
-        </ListItem>
+        {data.map((row) => (
+          <ListItem
+            button
+            key={row.id}
+            component="a"
+            href={"/employees/" + row.id}
+          >
+            <ListItemText
+              primary={row.firstName + " " + row.lastName}
+            ></ListItemText>
+          </ListItem>
+        ))}
       </List>
     </>
   )
