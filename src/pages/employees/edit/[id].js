@@ -14,6 +14,7 @@ export default function Employee(props) {
       <Page title="Edit Employee">
         <EditEmployee id={id}></EditEmployee>
         <actions>
+          <br />
           <Link href="/employees">
             <Button>Back</Button>
           </Link>
