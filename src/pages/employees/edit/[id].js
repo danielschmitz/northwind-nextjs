@@ -56,6 +56,8 @@ export default function Employee(props) {
       // just a test to show a loading screen
       setTimeout(function () {
         setLoading(false)
+
+        router.push("/employees")
       }, 2000)
     } catch (error) {
       console.error(error)
