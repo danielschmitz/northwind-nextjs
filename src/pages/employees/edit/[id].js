@@ -7,6 +7,8 @@ import useSWR from "swr"
 import fetcher from "../../../utils/fetcher"
 
 import Page from "../../../components/page"
+import http from "../../../utils/http"
+import HTTP_METHOD from "../../../utils/http_method"
 
 export default function Employee(props) {
   const router = useRouter()
@@ -16,8 +18,38 @@ export default function Employee(props) {
   if (error) return <div>failed to load</div>
   if (!data) return <LinearProgress></LinearProgress>
 
-  const handleSave = (event) => {
-    console.log("save", data)
+  const handleSave = async (formData) => {
+    const {
+      id,
+      firstName,
+      lastName,
+      title,
+      birthDate,
+      hireDate,
+      notes,
+      reports_to,
+    } = formData
+
+    const data = {
+      id,
+      firstName,
+      lastName,
+      title,
+      birthDate,
+      hireDate,
+      notes,
+      reports_to,
+    }
+
+    try {
+      await http({
+        method: data.id ? HTTP_METHOD.PUT : HTTP_METHOD.POST,
+        url: data.id ? `/api/employees/${data.id}` : "/api/employees",
+        data,
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const Actions = () => {
@@ -34,7 +66,10 @@ export default function Employee(props) {
   return (
     <>
       <Page title="Edit Employee">
-        <EditEmployee formData={data} onSave={() => handleSave}></EditEmployee>
+        <EditEmployee
+          formData={data}
+          onSave={(formData) => handleSave(formData)}
+        ></EditEmployee>
         <Actions></Actions>
       </Page>
     </>

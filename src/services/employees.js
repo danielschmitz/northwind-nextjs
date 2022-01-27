@@ -30,7 +30,7 @@ const EmployeeService = {
       reports_to,
     } = data
 
-    if (isStringBlank(fisrtName))
+    if (isStringBlank(firstName))
       throw new Error("The employee first name cannot be empty")
 
     if (isStringBlank(lastName))
@@ -76,7 +76,7 @@ const EmployeeService = {
     if (employee.length === 0) throw new NotFoundError("employee not found")
 
     const employees = await db(TABLE_NAME.employees)
-      .where({ fisrtName, lastName })
+      .where({ firstName, lastName })
       .whereNot({ id })
 
     if (employees.length > 0)

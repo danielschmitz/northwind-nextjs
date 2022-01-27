@@ -67,6 +67,10 @@ export default function EditEmployee(props) {
     setFormData({ ...formData, notes: event.target.value })
   }
 
+  const handleReportsToChange = (event) => {
+    setFormData({ ...formData, reports_to: event.target.value })
+  }
+
   return (
     <>
       <Container maxWidth="md">
@@ -143,6 +147,7 @@ export default function EditEmployee(props) {
                 label="Reports To"
                 fullWidth
                 value={formData.reports_to}
+                onChange={handleReportsToChange}
               >
                 {employees?.map(
                   (option) =>
@@ -187,7 +192,7 @@ export default function EditEmployee(props) {
           <Grid item xs={1}>
             <Button
               color="primary"
-              onClick={props.onSave}
+              onClick={() => props.onSave(formData)}
               disabled={
                 !errorState.firstName.valid || !errorState.lastName.valid
               }
