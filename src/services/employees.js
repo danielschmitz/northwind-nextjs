@@ -3,7 +3,7 @@ import NotFoundError from "../error/not_found_error"
 import isStringBlank from "../utils/is_string_blank"
 import TABLE_NAME from "../utils/table_name"
 
-export default {
+const EmployeeService = {
   getById: async (id) => {
     const result = await db(TABLE_NAME.employees).where({ id })
     if (result[0]) {
@@ -101,3 +101,4 @@ export default {
     return await db(TABLE_NAME.employees).where({ id }).del()
   },
 }
+export default EmployeeService

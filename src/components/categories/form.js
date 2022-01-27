@@ -32,7 +32,7 @@ export default function FormCategories(props) {
     <Dialog
       open={props.open || false}
       aria-labelledby="form-dialog-title"
-      fullWidth={true}
+      fullWidth
       maxWidth="sm"
     >
       <DialogTitle id="form-dialog-title">Category</DialogTitle>

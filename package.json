@@ -18,6 +18,7 @@
     "@mui/styled-engine-sc": "^5.3.0",
     "@mui/styles": "^5.3.0",
     "axios": "^0.25.0",
+    "date-fns": "^2.28.0",
     "dotenv": "^14.2.0",
     "etag": "^1.8.1",
     "knex": "^1.0.1",
