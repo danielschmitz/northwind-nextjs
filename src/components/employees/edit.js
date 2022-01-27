@@ -3,8 +3,6 @@ import {
   Button,
   Container,
   Grid,
-  LinearProgress,
-  Menu,
   MenuItem,
   Stack,
   TextField,
@@ -15,7 +13,6 @@ import { useEffect, useState } from "react"
 import useSWR from "swr"
 import fetcher from "../../utils/fetcher"
 import { Chip } from "@material-ui/core"
-import { NoBackpackSharp } from "@mui/icons-material"
 
 export default function EditEmployee(props) {
   useEffect(() => {
@@ -26,8 +23,17 @@ export default function EditEmployee(props) {
   const { data } = useSWR(`/api/employees`, fetcher)
   const employees = data
 
-  const [formData, setFormData] = useState({})
-  const [reportsTo, setReportsTo] = useState({})
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    title: "",
+    birthDate: "",
+    hireDate: "",
+    notes: "",
+    reports_to: "",
+  })
+
+  const [reportsTo, setReportsTo] = useState("")
 
   const [errorState, setErrorState] = useState({
     firstName: {
@@ -139,7 +145,7 @@ export default function EditEmployee(props) {
                 select
                 label="Reports To"
                 fullWidth
-                value={reportsTo}
+                value={formData.reports_to}
               >
                 {employees?.map(
                   (option) =>
@@ -154,7 +160,7 @@ export default function EditEmployee(props) {
             )}
           </Grid>
           <Grid item xs={12} sm={2}>
-            "Belongs to:"
+            Belongs to:
           </Grid>
           <Grid item xs={12} sm={10}>
             <Stack
@@ -165,7 +171,10 @@ export default function EditEmployee(props) {
                 (option) =>
                   option.id !== formData.id &&
                   option.reports_to === formData.id && (
-                    <Chip label={option.firstName + " " + option.lastName} />
+                    <Chip
+                      key={option.id}
+                      label={option.firstName + " " + option.lastName}
+                    />
                   )
               )}
             </Stack>

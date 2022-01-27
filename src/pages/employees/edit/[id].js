@@ -20,16 +20,22 @@ export default function Employee(props) {
     console.log("save", data)
   }
 
+  const Actions = () => {
+    return (
+      <>
+        <br />
+        <Link href="/employees">
+          <Button>Back</Button>
+        </Link>
+      </>
+    )
+  }
+
   return (
     <>
       <Page title="Edit Employee">
         <EditEmployee formData={data} onSave={() => handleSave}></EditEmployee>
-        <actions>
-          <br />
-          <Link href="/employees">
-            <Button>Back</Button>
-          </Link>
-        </actions>
+        <Actions></Actions>
       </Page>
     </>
   )

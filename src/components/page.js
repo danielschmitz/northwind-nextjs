@@ -15,7 +15,7 @@ export default function Page(props) {
           </CardContent>
         )}
         <CardContent>{props.children}</CardContent>
-        {props.actions && <CardActions>{props.actions}</CardActions>}
+        {props.Actions && <CardActions>{props.Actions}</CardActions>}
       </Paper>
     </div>
   )
