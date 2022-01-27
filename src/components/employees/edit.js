@@ -17,7 +17,6 @@ import { Chip } from "@material-ui/core"
 export default function EditEmployee(props) {
   useEffect(() => {
     setFormData(props.formData)
-    setReportsTo(props.formData.reports_to)
   }, [props.formData])
 
   const { data } = useSWR(`/api/employees`, fetcher)
@@ -32,8 +31,6 @@ export default function EditEmployee(props) {
     notes: "",
     reports_to: "",
   })
-
-  const [reportsTo, setReportsTo] = useState("")
 
   const [errorState, setErrorState] = useState({
     firstName: {
@@ -188,7 +185,13 @@ export default function EditEmployee(props) {
           alignItems="center"
         >
           <Grid item xs={1}>
-            <Button color="primary" onClick={props.onSave}>
+            <Button
+              color="primary"
+              onClick={props.onSave}
+              disabled={
+                !errorState.firstName.valid || !errorState.lastName.valid
+              }
+            >
               Save
             </Button>
           </Grid>
