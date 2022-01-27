@@ -53,7 +53,7 @@ export default function Employee(props) {
         data,
       })
 
-      // just a test
+      // just a test to show a loading screen
       setTimeout(function () {
         setLoading(false)
       }, 2000)
