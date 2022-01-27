@@ -9,10 +9,13 @@ import fetcher from "../../../utils/fetcher"
 import Page from "../../../components/page"
 import http from "../../../utils/http"
 import HTTP_METHOD from "../../../utils/http_method"
+import { useState } from "react"
 
 export default function Employee(props) {
   const router = useRouter()
   const { id } = router.query
+
+  const [loading, setLoading] = useState(false)
 
   const { data, error } = useSWR(id ? `/api/employees/${id}` : null, fetcher)
   if (error) return <div>failed to load</div>
@@ -42,13 +45,21 @@ export default function Employee(props) {
     }
 
     try {
+      setLoading(true)
+
       await http({
         method: data.id ? HTTP_METHOD.PUT : HTTP_METHOD.POST,
         url: data.id ? `/api/employees/${data.id}` : "/api/employees",
         data,
       })
+
+      // just a test
+      setTimeout(function () {
+        setLoading(false)
+      }, 2000)
     } catch (error) {
       console.error(error)
+      setLoading(false)
     }
   }
 
@@ -65,7 +76,7 @@ export default function Employee(props) {
 
   return (
     <>
-      <Page title="Edit Employee">
+      <Page title="Edit Employee" loading={loading}>
         <EditEmployee
           formData={data}
           onSave={(formData) => handleSave(formData)}
