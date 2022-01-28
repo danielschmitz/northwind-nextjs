@@ -93,6 +93,7 @@ const EmployeeService = {
     })
   },
   delete: async (id) => {
+    throw new Error("Nao é bom deletar o employee")
     const employee = await db(TABLE_NAME.employees).where({ id })
     if (employee.length === 0) {
       throw new NotFoundError("employee not found")
